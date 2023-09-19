@@ -1,0 +1,66 @@
+<div class="outer d-flex align-items-center justify-content-center">
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">Sign Up</div>
+          <div class="card-body">
+            <form [formGroup]="signupForm">
+              <div class="mb-3">
+                <input type="text" class="form-control" id="FirstName" formControlName="firstName" placeholder="First Name" autocomplete="off">
+                <small *ngIf="signupForm.get('firstName')?.hasError('required') && signupForm.get('firstName')?.touched"
+                  class="text-danger">
+                  First Name is required.
+                </small>
+              </div>
+              <div class="mb-3">
+                <input type="text" class="form-control" id="Lastname" formControlName="lastName" placeholder="Last Name" autocomplete="off">
+                <small *ngIf="signupForm.get('lastName')?.hasError('required') && signupForm.get('lastName')?.touched"
+                  class="text-danger">
+                  Last Name is required.
+                </small>
+              </div>
+              <div class="mb-3">
+                <input type="email" class="form-control" id="email" formControlName="email" placeholder="Email" autocomplete="off">
+                <small *ngIf="signupForm.get('email')?.hasError('required') && signupForm.get('email')?.touched"
+                  class="text-danger">
+                  Email is required.
+                </small>
+              </div>
+              <div class="mb-3">
+                <input type="text" class="form-control" id="userName" formControlName="userName" placeholder="User Name" autocomplete="off">
+                <small *ngIf="signupForm.get('userName')?.hasError('required') && signupForm.get('userName')?.touched"
+                  class="text-danger">
+                  User Name is required.
+                </small>
+              </div>
+              <div class="mb-3">
+                <div class="input-group">
+                  <input type="password" class="form-control" formControlName="password" id="password" placeholder="Password"
+                    [type]="showPassword ? 'text' : 'password'">
+                    
+                  <button class="btn btn-outline-secondary" type="button" (click)="togglePasswordVisibility()">
+                    {{ showPassword ? 'Hide' : 'Show' }}
+                  </button>
+                  
+                </div>
+                <small *ngIf="signupForm.get('password')?.hasError('required') && signupForm.get('password')?.touched"
+                  class="text-danger">
+                  Password is required.
+                </small>
+              </div>
+              <button [disabled]="signupForm.invalid" (click)="onSubmit()" type="submit" class="btn btn-primary mb-3">Sign Up</button>
+              <button type="button" class="btn btn-secondary mb-3" (click)="clearForm()">Clear</button>
+
+
+            </form>
+
+            <div class="mt-3 text muted">
+              Already have an account? <a routerLink="/login">Log In</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
