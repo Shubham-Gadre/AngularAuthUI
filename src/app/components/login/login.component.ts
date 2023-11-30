@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-
+token:string | undefined;
   showPassword: boolean = false;
   loginForm: FormGroup;
 
@@ -32,9 +32,12 @@ export class LoginComponent {
     {
       //send the object to the database
       this.auth.logIn(this.loginForm.value).subscribe({
-        next:(result)=>{
-          this.toast.success('Login successful');
+        next:(result:any)=>{
+          debugger
+          console.log(result.token);
           this.loginForm.reset();
+          this.auth.storeToken(result.token);
+          this.toast.success('Login successful');
           this.router.navigate(['/dashboard']);
       },
         error:(err)=>{

@@ -1,2 +1,14 @@
-<iframe id="myIframe" src="https://jwtauth.turbosite.io/"></iframe>
+
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand">Navbar</a>
+    <form class="d-flex" *ngIf="isLoggedIn">
+      
+        <h5>Hello, Brother!</h5>
+        <button class="btn btn-danger" (click)="logOut()">Log out!</button>
+      
+    </form>
+  </div>
+</nav>
+
 
